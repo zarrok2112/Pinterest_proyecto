@@ -10,12 +10,12 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/upload', (req, res) => {
-    res.send('Form upload page');
+    res.render('upload');
 });
 
 router.post('/upload', async (req, res) => {
     const image = new Image();
-    image.title = req.body.title;
+    image.tittle = req.body.title;
     image.description = req.body.description;
     image.filename = req.file.filename;
     image.path = '/img/uploads/' + req.file.filename;
@@ -26,7 +26,6 @@ router.post('/upload', async (req, res) => {
     await image.save();
     
     res.redirect('/');
-
 });
 
 router.get('/image/:id', async (req, res) => {

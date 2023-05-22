@@ -20,18 +20,7 @@ app.set('view engine', 'ejs');
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
-const storage = multer.diskStorage({
-    filename: (req, file, cb, filename)=>{
-        destination: path.join(__dirname, 'public/img/uploads')
-      cb(null, uuid() + path.extname(file.originalname));      
-    }
-})
-
-app.use(multer({
-    storage: storage
-}).single('image'))
-
-
+app.use(multer({dest: path.join(__dirname, 'public/img/uploads')}).single('image'));
 
 
 //Variables Globales
