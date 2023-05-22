@@ -26,9 +26,10 @@ const storage = multer.diskStorage({
       cb(null, uuid() + path.extname(file.originalname));      
     }
 })
-app.use = multer({
+
+app.use(multer({
     storage: storage
-}).single('image')
+}).single('image'))
 
 
 
